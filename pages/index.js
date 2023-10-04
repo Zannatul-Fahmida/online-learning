@@ -6,6 +6,7 @@ import TopCourses from "../components/Home/TopCourses";
 import PopularCourses from "../components/Home/PopularCourses";
 import PlatformStats from "../components/Home/PlatformStats";
 import Footer from "../components/Shared/Footer";
+import About from "../components/Home/About";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <main>
         <Navbar />
         <Banner />
+        <About />
         <CareerGoal />
         <TopCourses />
         <PopularCourses />
