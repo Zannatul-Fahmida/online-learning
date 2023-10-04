@@ -1,9 +1,9 @@
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 import CareerCard from "./CareerCard";
-import businessImg from "../public/Vector.png";
-import codeImg from "../public/🦆 icon _code brackets square_.png";
-import marketImg from "../public/🦆 icon _graph up_.png";
-import designImg from "../public/🦆 icon _color filter_.png";
+import businessImg from "../../public/Vector.png";
+import codeImg from "../../public/🦆 icon _code brackets square_.png";
+import marketImg from "../../public/🦆 icon _graph up_.png";
+import designImg from "../../public/🦆 icon _color filter_.png";
 
 const goals = [
   {
@@ -43,7 +43,12 @@ export default function CareerGoal() {
       </p>
       <div className="grid md:grid-cols-5 gap-4 my-5">
         {goals?.map((goal) => (
-          <CareerCard key={goal.title} title={goal.title} available={goal.available} image={goal.image} />
+          <CareerCard
+            key={goal.title}
+            title={goal.title}
+            available={goal.available}
+            image={goal.image}
+          />
         ))}
       </div>
     </div>

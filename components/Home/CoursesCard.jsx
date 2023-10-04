@@ -1,5 +1,5 @@
 import Image from "next/image";
-import courseImg from "../public/card.png";
+import courseImg from "../../public/card.png";
 import {
   AiOutlineShoppingCart,
   AiOutlineHeart,
@@ -7,7 +7,7 @@ import {
   AiOutlineShareAlt,
   AiFillStar,
 } from "react-icons/ai";
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 
 export default function CoursesCard({ course }) {
   const { title, teacher, ratings, price } = course;

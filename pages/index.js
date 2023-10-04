@@ -1,9 +1,10 @@
 import Head from "next/head";
-import Navbar from "../components/Navbar";
-import Banner from "../components/Banner";
-import CareerGoal from "../components/CareerGoal";
-import TopCourses from "../components/TopCourses";
-import PopularCourses from "../components/PopularCourses";
+import Navbar from "../components/Shared/Navbar";
+import Banner from "../components/Home/Banner";
+import CareerGoal from "../components/Home/CareerGoal";
+import TopCourses from "../components/Home/TopCourses";
+import PopularCourses from "../components/Home/PopularCourses";
+import PlatformStats from "../components/Home/PlatformStats";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <CareerGoal />
         <TopCourses />
         <PopularCourses />
+        <PlatformStats />
       </main>
     </>
   );

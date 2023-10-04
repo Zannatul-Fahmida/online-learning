@@ -1,4 +1,5 @@
-import styles from "../styles/Home.module.css";
+import Link from "next/link";
+import styles from "../../styles/Home.module.css";
 import CoursesCard from "./CoursesCard";
 
 const courses = [
@@ -34,16 +35,22 @@ export default function TopCourses() {
       <h2 className="text-3xl m-4">Top Level Courses</h2>
       <div className="carousel w-full">
         <div id="slide1" className="carousel-item relative w-full">
-            {courses?.map((course) => (
-              <CoursesCard key={course.title} course={course} />
-            ))}
+          {courses?.map((course) => (
+            <CoursesCard key={course.title} course={course} />
+          ))}
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-            <a href="#slide4" className="btn btn-circle bg-zinc-800 text-white border-0">
+            <Link
+              href="#slide4"
+              className="btn btn-circle bg-zinc-800 text-white border-0"
+            >
               ❮
-            </a>
-            <a href="#slide2" className="btn btn-circle bg-zinc-800 text-white border-0">
+            </Link>
+            <Link
+              href="#slide2"
+              className="btn btn-circle bg-zinc-800 text-white border-0"
+            >
               ❯
-            </a>
+            </Link>
           </div>
         </div>
       </div>

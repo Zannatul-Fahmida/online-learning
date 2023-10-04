@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BiSearch } from "react-icons/bi";
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 
 export default function Navbar() {
   return (
