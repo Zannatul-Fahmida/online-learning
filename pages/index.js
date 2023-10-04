@@ -5,6 +5,7 @@ import CareerGoal from "../components/Home/CareerGoal";
 import TopCourses from "../components/Home/TopCourses";
 import PopularCourses from "../components/Home/PopularCourses";
 import PlatformStats from "../components/Home/PlatformStats";
+import Footer from "../components/Shared/Footer";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <TopCourses />
         <PopularCourses />
         <PlatformStats />
+        <Footer />
       </main>
     </>
   );
