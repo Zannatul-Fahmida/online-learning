@@ -9,8 +9,8 @@ export default function Banner() {
         Experience personalized and interactive education from anywhere in the
         world with our innovative online learning and teaching platform.
       </p>
-      <button className={`${styles.darkTealBg} px-6 py-3 rounded md:m-6 m-2`}>Start Teaching</button>
-      <button className={`${styles.tealBg} px-6 py-3 rounded md:m-6 m-2`}>Start Learning</button>
+      <button className={`${styles.darkTealBg} px-6 py-3 rounded md:m-6 m-2 shadow-md`}>Start Teaching</button>
+      <button className={`${styles.tealBg} px-6 py-3 rounded md:m-6 m-2 shadow-md`}>Start Learning</button>
     </div>
   );
 }
