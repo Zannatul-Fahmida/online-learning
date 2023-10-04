@@ -2,6 +2,8 @@ import Head from "next/head";
 import Navbar from "../components/Navbar";
 import Banner from "../components/Banner";
 import CareerGoal from "../components/CareerGoal";
+import TopCourses from "../components/TopCourses";
+import PopularCourses from "../components/PopularCourses";
 
 export default function Home() {
   return (
@@ -16,6 +18,8 @@ export default function Home() {
         <Navbar />
         <Banner />
         <CareerGoal />
+        <TopCourses />
+        <PopularCourses />
       </main>
     </>
   );

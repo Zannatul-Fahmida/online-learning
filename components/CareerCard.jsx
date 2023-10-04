@@ -2,7 +2,6 @@ import styles from "../styles/Home.module.css";
 import Image from "next/image";
 
 export default function CareerCard({ title, available, image }) {
-  console.log(image);
   return (
     <div className={`${styles.transparentTealBg} card shadow-xl`}>
       <div className="card-body">

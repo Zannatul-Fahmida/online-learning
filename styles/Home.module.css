@@ -14,3 +14,9 @@
   background-color: #05161ae1;
   border: 2px #0F969C solid;
 }
+.courseBg{
+  background-image: url('../public/banner\ 2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
