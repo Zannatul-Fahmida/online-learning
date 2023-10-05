@@ -4,7 +4,7 @@ import styles from "../../styles/Home.module.css";
 export default function Footer() {
   return (
     <div className={`${styles.bannerBg} md:p-24 p-12 text-white`}>
-      <footer className="footer p-10 text-white">
+      <footer className="footer text-white">
         <aside>
           <p className="text-3xl">Logo</p>
           <p className="text-2xl">

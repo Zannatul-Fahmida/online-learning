@@ -1,6 +1,8 @@
 import CoursesCard from "./CoursesCard";
 import styles from "../../styles/Home.module.css";
 import Link from "next/link";
+import Image from "next/image";
+import img from "../../public/384554719_823550176120426_4245361704016428055_n.png";
 
 const courses = [
   {
@@ -31,8 +33,11 @@ const courses = [
 
 export default function PopularCourses() {
   return (
-    <div className={`${styles.bannerBg} text-center text-white px-10 py-20`}>
-      <h2 className="text-3xl m-4">Popular Courses</h2>
+    <div
+      className={`${styles.bannerBg} flex flex-col justify-center items-center text-center text-white px-12 md:px-24 py-20`}
+    >
+      <h2 className="text-3xl">Popular Courses</h2>
+      <Image className="my-8" width={500} src={img} alt="design" />
       <div className="carousel w-full">
         <div id="slide1" className="carousel-item relative w-full">
           {courses?.map((course) => (

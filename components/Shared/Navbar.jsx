@@ -47,7 +47,7 @@ const categoriesItems = [
 
 export default function Navbar() {
   return (
-    <div className={`${styles.darkTealBg} navbar text-white md:px-12`}>
+    <div className={`${styles.darkTealBg} navbar text-white md:px-24`}>
       <div className="navbar-start w-full md:w-1/2">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
