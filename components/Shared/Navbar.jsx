@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { BiSearch } from "react-icons/bi";
 import styles from "../../styles/Home.module.css";
+import { useState } from "react";
+import RegisterModal from "../Register/RegisterModal";
 
 const categoriesItems = [
   {
@@ -46,6 +48,21 @@ const categoriesItems = [
 ];
 
 export default function Navbar() {
+  const [registerModalOpen, setRegisterModalOpen] = useState(false);
+
+  const handleRegisterModal = (id) => {
+    if (!registerModalOpen) {
+      setRegisterModalOpen(true);
+      setTimeout(() => {
+        const modal = document.getElementById(id);
+        if (modal) {
+          modal.showModal();
+        }
+      }, 0);
+    }
+  };
+
+  console.log(registerModalOpen);
   return (
     <div className={`${styles.darkTealBg} navbar text-white md:px-24`}>
       <div className="navbar-start w-full md:w-1/2">
@@ -138,15 +155,16 @@ export default function Navbar() {
         </div>
       </div>
       <div className="navbar-end hidden lg:flex">
-        <Link href="/" className="btn btn-ghost">
-          Sign In
-        </Link>
-        <Link
-          href="/"
+        <button className="btn btn-ghost">Sign In</button>
+        <button
           className={`${styles.tealBg} btn text-white border-0 rounded-md hover:bg-teal-900 ml-3`}
+          onClick={() => handleRegisterModal("my_modal_5")}
         >
           Get Started
-        </Link>
+        </button>
+        {registerModalOpen && (
+          <RegisterModal setRegisterModalOpen={setRegisterModalOpen} />
+        )}
       </div>
     </div>
   );
