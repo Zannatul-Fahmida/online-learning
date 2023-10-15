@@ -3,7 +3,7 @@ import styles from "../../styles/Register.module.css";
 
 export default function RegisterModal({ setRegisterModalOpen }) {
   return (
-    <dialog id="my_modal_5" className="modal">
+    <dialog id="my_modal_2" className="modal">
       <div className="modal-box flex items-center text-black p-0 h-full w-11/12 max-w-4xl">
         <div
           className={`${styles.registerBg} h-full px-10 text-white text-center flex flex-col justify-center`}

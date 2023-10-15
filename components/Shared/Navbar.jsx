@@ -3,6 +3,7 @@ import { BiSearch } from "react-icons/bi";
 import styles from "../../styles/Home.module.css";
 import { useState } from "react";
 import RegisterModal from "../Register/RegisterModal";
+import LoginModal from "../Register/LoginModal";
 
 const categoriesItems = [
   {
@@ -49,6 +50,7 @@ const categoriesItems = [
 
 export default function Navbar() {
   const [registerModalOpen, setRegisterModalOpen] = useState(false);
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
 
   const handleRegisterModal = (id) => {
     if (!registerModalOpen) {
@@ -62,7 +64,18 @@ export default function Navbar() {
     }
   };
 
-  console.log(registerModalOpen);
+  const handleLoginModal = (id) => {
+    if (!loginModalOpen) {
+      setLoginModalOpen(true);
+      setTimeout(() => {
+        const modal = document.getElementById(id);
+        if (modal) {
+          modal.showModal();
+        }
+      }, 0);
+    }
+  };
+
   return (
     <div className={`${styles.darkTealBg} navbar text-white md:px-24`}>
       <div className="navbar-start w-full md:w-1/2">
@@ -155,10 +168,13 @@ export default function Navbar() {
         </div>
       </div>
       <div className="navbar-end hidden lg:flex">
-        <button className="btn btn-ghost">Sign In</button>
+        <button className="btn btn-ghost" onClick={() => handleLoginModal("my_modal_1")}>Sign In</button>
+        {loginModalOpen && (
+          <LoginModal setLoginModalOpen={setLoginModalOpen} />
+        )}
         <button
           className={`${styles.tealBg} btn text-white border-0 rounded-md hover:bg-teal-900 ml-3`}
-          onClick={() => handleRegisterModal("my_modal_5")}
+          onClick={() => handleRegisterModal("my_modal_2")}
         >
           Get Started
         </button>
