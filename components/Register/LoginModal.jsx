@@ -2,21 +2,48 @@ import Link from "next/link";
 import styles from "../../styles/Register.module.css";
 import { useState } from "react";
 import ForgotModal from "./ForgotModal";
+import { useRouter } from "next/navigation";
+import RegisterModal from "./RegisterModal";
 
-export default function LoginModal({ setLoginModalOpen }) {
-    const [forgotModalOpen, setForgotModalOpen] = useState(false);
+export default function LoginModal({
+  setLoginModalOpen,
+  registerModalOpen,
+  setRegisterModalOpen,
+}) {
+  const router = useRouter();
+  const [forgotModalOpen, setForgotModalOpen] = useState(false);
 
-    const handleForgotModal = (id) => {
-      if (!forgotModalOpen) {
-        setForgotModalOpen(true);
-        setTimeout(() => {
-          const modal = document.getElementById(id);
-          if (modal) {
-            modal.showModal();
-          }
-        }, 0);
-      }
-    };
+  const handleClose = () => {
+    router.push("/");
+    setLoginModalOpen(false);
+  };
+
+  const handleRegisterModal = (id) => {
+    if (!registerModalOpen) {
+      router.push({ pathname: "/", query: { modal: "register" } });
+      setRegisterModalOpen(true);
+      setLoginModalOpen(false);
+      setTimeout(() => {
+        const modal = document.getElementById(id);
+        if (modal) {
+          modal.showModal();
+        }
+      }, 0);
+    }
+  };
+
+  const handleForgotModal = (id) => {
+    if (!forgotModalOpen) {
+      router.push({ pathname: "/", query: { modal: "reset" } });
+      setForgotModalOpen(true);
+      setTimeout(() => {
+        const modal = document.getElementById(id);
+        if (modal) {
+          modal.showModal();
+        }
+      }, 0);
+    }
+  };
   return (
     <dialog id="my_modal_1" className="modal">
       <div className="modal-box flex items-center text-black p-0 h-full w-11/12 max-w-4xl">
@@ -39,37 +66,55 @@ export default function LoginModal({ setLoginModalOpen }) {
             className={`${styles.tealBg} input w-full mb-4`}
           />
           <input
-            type="text"
+            type="password"
             placeholder="Enter Your Password....."
             className={`${styles.tealBg} input w-full mb-4`}
           />
           <div className="flex items-center justify-between w-full">
             <div className="form-control">
               <label className="label cursor-pointer">
-                <input type="checkbox" defaultChecked={false} className="checkbox" />
+                <input
+                  type="checkbox"
+                  defaultChecked={false}
+                  className="checkbox"
+                />
                 <span className="label-text ml-2 text-white">Remember me</span>
               </label>
             </div>
-            <button className="text-sm" onClick={() => handleForgotModal("my_modal_3")}>Forgot Password</button>
+            <button
+              className="text-sm"
+              onClick={() => handleForgotModal("my_modal_3")}
+            >
+              Forgot Password
+            </button>
             {forgotModalOpen && (
-                <ForgotModal setForgotModalOpen={setForgotModalOpen} />
-              )}
+              <ForgotModal
+                setLoginModalOpen={setLoginModalOpen}
+                setForgotModalOpen={setForgotModalOpen}
+              />
+            )}
           </div>
           <button
             className={`${styles.tealBg} btn text-white border-0 hover:bg-gray-800/80 w-80 mt-8 mb-4`}
           >
             Log In
           </button>
-          <p>
+          <div>
             Don’t have an account? Please{" "}
-            <Link href="/" className="text-black font-semibold">
+            <button
+              className="text-black font-semibold"
+              onClick={() => handleRegisterModal("my_modal_2")}
+            >
               Sign Up
-            </Link>
-          </p>
+            </button>
+            {registerModalOpen && (
+              <RegisterModal setRegisterModalOpen={setRegisterModalOpen} />
+            )}
+          </div>
         </div>
       </div>
       <form method="dialog" className="modal-backdrop">
-        <button onClick={() => setLoginModalOpen(false)}>close</button>
+        <button onClick={() => handleClose()}>close</button>
       </form>
     </dialog>
   );

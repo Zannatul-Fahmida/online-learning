@@ -1,7 +1,33 @@
-import Link from "next/link";
 import styles from "../../styles/Register.module.css";
+import { useRouter } from "next/navigation";
+import LoginModal from "./LoginModal";
 
-export default function RegisterModal({ setRegisterModalOpen }) {
+export default function RegisterModal({
+  setRegisterModalOpen,
+  loginModalOpen,
+  setLoginModalOpen,
+}) {
+  const router = useRouter();
+
+  const handleClose = () => {
+    router.push("/");
+    setRegisterModalOpen(false);
+  };
+
+  const handleLoginModal = (id) => {
+    if (!loginModalOpen) {
+      router.push({ pathname: "/", query: { modal: "login" } });
+      setLoginModalOpen(true);
+      setRegisterModalOpen(false);
+      setTimeout(() => {
+        const modal = document.getElementById(id);
+        if (modal) {
+          modal.showModal();
+        }
+      }, 0);
+    }
+  };
+
   return (
     <dialog id="my_modal_2" className="modal">
       <div className="modal-box flex items-center text-black p-0 h-full w-11/12 max-w-4xl">
@@ -24,7 +50,7 @@ export default function RegisterModal({ setRegisterModalOpen }) {
             className={`${styles.tealBg} input w-full mb-4`}
           />
           <input
-            type="text"
+            type="email"
             placeholder="Email Address...."
             className={`${styles.tealBg} input w-full mb-4`}
           />
@@ -35,19 +61,19 @@ export default function RegisterModal({ setRegisterModalOpen }) {
               className={`${styles.tealBg} input w-full mr-4`}
             />
             <input
-              type="text"
+              type="number"
               placeholder="Phone Number...."
               className={`${styles.tealBg} input w-full`}
             />
           </div>
           <div className="flex w-full mb-4">
             <input
-              type="text"
+              type="password"
               placeholder="Password...."
               className={`${styles.tealBg} input w-full mr-4`}
             />
             <input
-              type="text"
+              type="password"
               placeholder="Confirm Password...."
               className={`${styles.tealBg} input w-full`}
             />
@@ -57,13 +83,22 @@ export default function RegisterModal({ setRegisterModalOpen }) {
           >
             Sign Up
           </button>
-          <p>
-            Have an account? Please <Link href='/' className="text-black font-semibold">Sign In</Link>
-          </p>
+          <div>
+            Have an account? Please{" "}
+            <button
+              className="text-black font-semibold"
+              onClick={() => handleLoginModal("my_modal_1")}
+            >
+              Sign In
+            </button>
+            {loginModalOpen && (
+              <LoginModal setLoginModalOpen={setLoginModalOpen} />
+            )}
+          </div>
         </div>
       </div>
       <form method="dialog" className="modal-backdrop">
-        <button onClick={() => setRegisterModalOpen(false)}>close</button>
+        <button onClick={() => handleClose()}>close</button>
       </form>
     </dialog>
   );

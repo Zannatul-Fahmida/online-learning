@@ -4,6 +4,7 @@ import styles from "../../styles/Home.module.css";
 import { useState } from "react";
 import RegisterModal from "../Register/RegisterModal";
 import LoginModal from "../Register/LoginModal";
+import { useRouter } from "next/navigation";
 
 const categoriesItems = [
   {
@@ -49,11 +50,13 @@ const categoriesItems = [
 ];
 
 export default function Navbar() {
+  const router = useRouter();
   const [registerModalOpen, setRegisterModalOpen] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
 
   const handleRegisterModal = (id) => {
     if (!registerModalOpen) {
+      router.push({ pathname: "/", query: { modal: "register" } });
       setRegisterModalOpen(true);
       setTimeout(() => {
         const modal = document.getElementById(id);
@@ -66,6 +69,7 @@ export default function Navbar() {
 
   const handleLoginModal = (id) => {
     if (!loginModalOpen) {
+      router.push({ pathname: "/", query: { modal: "login" } });
       setLoginModalOpen(true);
       setTimeout(() => {
         const modal = document.getElementById(id);
@@ -168,9 +172,18 @@ export default function Navbar() {
         </div>
       </div>
       <div className="navbar-end hidden lg:flex">
-        <button className="btn btn-ghost" onClick={() => handleLoginModal("my_modal_1")}>Sign In</button>
+        <button
+          className="btn btn-ghost"
+          onClick={() => handleLoginModal("my_modal_1")}
+        >
+          Sign In
+        </button>
         {loginModalOpen && (
-          <LoginModal setLoginModalOpen={setLoginModalOpen} />
+          <LoginModal
+            setLoginModalOpen={setLoginModalOpen}
+            registerModalOpen={registerModalOpen}
+            setRegisterModalOpen={setRegisterModalOpen}
+          />
         )}
         <button
           className={`${styles.tealBg} btn text-white border-0 rounded-md hover:bg-teal-900 ml-3`}
@@ -179,7 +192,11 @@ export default function Navbar() {
           Get Started
         </button>
         {registerModalOpen && (
-          <RegisterModal setRegisterModalOpen={setRegisterModalOpen} />
+          <RegisterModal
+            setRegisterModalOpen={setRegisterModalOpen}
+            loginModalOpen={loginModalOpen}
+            setLoginModalOpen={setLoginModalOpen}
+          />
         )}
       </div>
     </div>

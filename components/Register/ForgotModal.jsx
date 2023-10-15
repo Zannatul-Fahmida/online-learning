@@ -1,6 +1,15 @@
+import { useRouter } from "next/navigation";
 import styles from "../../styles/Register.module.css";
 
-export default function ForgotModal({ setForgotModalOpen }) {
+export default function ForgotModal({ setForgotModalOpen, setLoginModalOpen }) {
+  const router = useRouter();
+
+  const handleClose = () => {
+    router.push("/");
+    setForgotModalOpen(false);
+    setLoginModalOpen(false);
+  };
+
   return (
     <dialog id="my_modal_3" className="modal">
       <div className="modal-box flex items-center text-black p-0 h-full w-11/12 max-w-4xl">
@@ -28,13 +37,12 @@ export default function ForgotModal({ setForgotModalOpen }) {
             className={`${styles.tealBg} input w-full mb-4`}
           />
           <div className="flex items-center justify-around w-full mt-12">
-            <form method="dialog">
-              <button
-                className={`${styles.tealBg} btn text-white border-0 hover:bg-gray-800/80 px-12`}
-              >
-                Cancel
-              </button>
-            </form>
+            <button
+              onClick={() => handleClose()}
+              className={`${styles.tealBg} btn text-white border-0 hover:bg-gray-800/80 px-12`}
+            >
+              Cancel
+            </button>
             <button
               className={`${styles.tealBg} btn text-white border-0 hover:bg-gray-800/80 px-12`}
             >
@@ -44,7 +52,7 @@ export default function ForgotModal({ setForgotModalOpen }) {
         </div>
       </div>
       <form method="dialog" className="modal-backdrop">
-        <button onClick={() => setForgotModalOpen(false)}>close</button>
+        <button onClick={() => handleClose()}>close</button>
       </form>
     </dialog>
   );
