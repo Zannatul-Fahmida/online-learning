@@ -12,9 +12,9 @@ export default function ForgotModal({ setForgotModalOpen, setLoginModalOpen }) {
 
   return (
     <dialog id="my_modal_3" className="modal">
-      <div className="modal-box flex items-center text-black p-0 h-full w-11/12 max-w-4xl">
+      <div className="modal-box flex flex-col md:flex-row md:items-center text-black p-0 h-full w-11/12 max-w-4xl">
         <div
-          className={`${styles.registerBg} h-full px-10 text-white text-center flex flex-col justify-center`}
+          className={`${styles.registerBg} h-full px-10 text-white text-center flex flex-col justify-center py-16 md:py-0`}
         >
           <h2 className="text-4xl font-bold">Hello There!</h2>
           <p className="text-lg mt-2">
@@ -36,7 +36,7 @@ export default function ForgotModal({ setForgotModalOpen, setLoginModalOpen }) {
             placeholder="Your Email Address"
             className={`${styles.tealBg} input w-full mb-4`}
           />
-          <div className="flex items-center justify-around w-full mt-12">
+          <div className="flex items-center justify-around w-full mt-12 pb-12 md:pb-0">
             <button
               onClick={() => handleClose()}
               className={`${styles.tealBg} btn text-white border-0 hover:bg-gray-800/80 px-12`}

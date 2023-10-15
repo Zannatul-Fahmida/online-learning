@@ -30,9 +30,9 @@ export default function RegisterModal({
 
   return (
     <dialog id="my_modal_2" className="modal">
-      <div className="modal-box flex items-center text-black p-0 h-full w-11/12 max-w-4xl">
+      <div className="modal-box flex flex-col md:flex-row md:items-center text-black p-0 h-full w-11/12 max-w-4xl">
         <div
-          className={`${styles.registerBg} h-full px-10 text-white text-center flex flex-col justify-center`}
+          className={`${styles.registerBg} h-full px-10 text-white text-center flex flex-col justify-center py-16 md:py-0`}
         >
           <h2 className="text-4xl font-bold">Welcome!</h2>
           <p className="text-lg mt-2">
@@ -83,7 +83,7 @@ export default function RegisterModal({
           >
             Sign Up
           </button>
-          <div>
+          <div className="pb-12 md:pb-0">
             Have an account? Please{" "}
             <button
               className="text-black font-semibold"

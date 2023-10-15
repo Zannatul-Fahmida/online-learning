@@ -46,9 +46,9 @@ export default function LoginModal({
   };
   return (
     <dialog id="my_modal_1" className="modal">
-      <div className="modal-box flex items-center text-black p-0 h-full w-11/12 max-w-4xl">
+      <div className="modal-box flex flex-col md:flex-row md:items-center text-black p-0 h-full w-11/12 max-w-4xl">
         <div
-          className={`${styles.registerBg} h-full px-10 text-white text-center flex flex-col justify-center`}
+          className={`${styles.registerBg} h-full px-10 text-white text-center flex flex-col justify-center py-16 md:py-0`}
         >
           <h2 className="text-4xl font-bold">Hello There!</h2>
           <p className="text-lg mt-2">
@@ -99,7 +99,7 @@ export default function LoginModal({
           >
             Log In
           </button>
-          <div>
+          <div className="pb-12 md:pb-0">
             Don’t have an account? Please{" "}
             <button
               className="text-black font-semibold"

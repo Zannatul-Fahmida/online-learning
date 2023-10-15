@@ -118,21 +118,35 @@ export default function Navbar() {
               </ul>
             </li>
             <li>
-              <Link
-                href="/"
+              <button
                 className="btn btn-ghost hover:bg-teal-900 hover:text-white"
+                onClick={() => handleLoginModal("my_modal_1")}
               >
                 Sign In
-              </Link>
+              </button>
             </li>
+            {loginModalOpen && (
+              <LoginModal
+                setLoginModalOpen={setLoginModalOpen}
+                registerModalOpen={registerModalOpen}
+                setRegisterModalOpen={setRegisterModalOpen}
+              />
+            )}
             <li>
-              <Link
-                href="/"
+              <button
                 className={`btn btn-ghost hover:bg-teal-900 hover:text-white`}
+                onClick={() => handleRegisterModal("my_modal_2")}
               >
                 Get Started
-              </Link>
+              </button>
             </li>
+            {registerModalOpen && (
+              <RegisterModal
+                setRegisterModalOpen={setRegisterModalOpen}
+                loginModalOpen={loginModalOpen}
+                setLoginModalOpen={setLoginModalOpen}
+              />
+            )}
           </ul>
         </div>
         <Link className="normal-case text-2xl" href="/">
