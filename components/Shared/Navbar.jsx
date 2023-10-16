@@ -110,28 +110,37 @@ export default function Navbar() {
                 {categoriesItems.map((item, index) => (
                   <li
                     key={index}
-                    className="bg-gray-800/50 rounded-lg my-2 py-2"
+                    className={`${styles.darkTealBg} rounded-lg my-2 py-2`}
                   >
-                    <Link href={item.slug}>{item.title}</Link>
+                    <Link
+                      href={item.slug}
+                      className="hover:text-slate-300 hover:bg-transparent"
+                    >
+                      {item.title}
+                    </Link>
                   </li>
                 ))}
               </ul>
             </li>
             <li>
-              <button
-                className="btn btn-ghost hover:bg-teal-900 hover:text-white"
-                onClick={() => handleLoginModal("my_modal_1")}
-              >
-                Sign In
-              </button>
+              <div className="flex justify-center">
+                <button
+                  className="btn btn-ghost hover:bg-teal-900 hover:text-white w-full"
+                  onClick={() => handleLoginModal("my_modal_1")}
+                >
+                  Sign In
+                </button>
+              </div>
             </li>
             <li>
-              <button
-                className={`btn btn-ghost hover:bg-teal-900 hover:text-white`}
-                onClick={() => handleRegisterModal("my_modal_2")}
-              >
-                Get Started
-              </button>
+              <div className="flex justify-center">
+                <button
+                  className="btn btn-ghost hover:bg-teal-900 hover:text-white w-full"
+                  onClick={() => handleRegisterModal("my_modal_2")}
+                >
+                  Get Started
+                </button>
+              </div>
             </li>
           </ul>
         </div>
@@ -148,8 +157,13 @@ export default function Navbar() {
                   className="grid grid-cols-2 gap-3 w-96"
                 >
                   {categoriesItems.map((item, index) => (
-                    <li key={index} className="bg-gray-800/50 rounded-lg">
-                      <Link href={item.slug}>{item.title}</Link>
+                    <li
+                      key={index}
+                      className={`${styles.tealTransparentBg} rounded-lg`}
+                    >
+                      <Link href={item.slug} className="hover:text-slate-300">
+                        {item.title}
+                      </Link>
                     </li>
                   ))}
                 </ul>
