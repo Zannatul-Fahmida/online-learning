@@ -72,7 +72,7 @@ export default function LoginModal({
           />
           <div className="flex items-center justify-between w-full">
             <div className="form-control">
-              <label className="label cursor-pointer">
+              <label className="label cursor-pointer px-0">
                 <input
                   type="checkbox"
                   defaultChecked={false}
