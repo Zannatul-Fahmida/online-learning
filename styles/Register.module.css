@@ -7,3 +7,26 @@
 .tealBg{
     background-color: #03353C;
   }
+.passwordInput {
+    position: relative;
+}
+.passwordContainer {
+    position: relative;
+}
+.togglePassword {
+    position: absolute;
+    right: 10px; 
+    top: 50%; 
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none; 
+    background-color: transparent; 
+    border: none; 
+    padding: 0; 
+    font-size: 20px; 
+    color: #fff; 
+}
+.togglePassword:hover {
+    color: #888; 
+}
+  

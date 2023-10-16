@@ -1,9 +1,9 @@
-import Link from "next/link";
 import styles from "../../styles/Register.module.css";
 import { useState } from "react";
 import ForgotModal from "./ForgotModal";
 import { useRouter } from "next/navigation";
 import RegisterModal from "./RegisterModal";
+import {AiOutlineEye, AiFillEye} from 'react-icons/ai'
 
 export default function LoginModal({
   setLoginModalOpen,
@@ -12,6 +12,12 @@ export default function LoginModal({
 }) {
   const router = useRouter();
   const [forgotModalOpen, setForgotModalOpen] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [password, setPassword] = useState("");
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   const handleClose = () => {
     router.push("/");
@@ -65,11 +71,23 @@ export default function LoginModal({
             placeholder="Enter Your Email or Username....."
             className={`${styles.tealBg} input w-full mb-4`}
           />
-          <input
-            type="password"
-            placeholder="Enter Your Password....."
-            className={`${styles.tealBg} input w-full mb-4`}
-          />
+          <div className={`${styles.passwordInput} w-full`}>
+            <div className={`${styles.passwordContainer}`}>
+              <input
+                type={passwordVisible ? "text" : "password"}
+                placeholder="Enter Your Password....."
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className={`${styles.tealBg} input w-full`}
+              />
+              <span
+                className={`${styles.togglePassword} ${styles.tealBg} text-white p-2 rounded`}
+                onClick={togglePasswordVisibility}
+              >
+                {passwordVisible ? <AiFillEye /> : <AiOutlineEye />}
+              </span>
+            </div>
+          </div>
           <div className="flex items-center justify-between w-full">
             <div className="form-control">
               <label className="label cursor-pointer px-0">
