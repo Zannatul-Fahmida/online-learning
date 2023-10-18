@@ -1,19 +1,29 @@
 import Image from "next/image";
+import courseImg from "../../public/Rectangle 117.png";
+import { useState } from "react";
+import { FiCheckCircle } from "react-icons/fi";
 import styles from "../../styles/Course.module.css";
-import courseImg from "../../public/card.png";
 
 export default function CourseBanner() {
+  const [promoCode, setPromoCode] = useState(false);
+
+  const handlePromo = () => {
+    setPromoCode(true);
+  };
+  const closePromo = () => {
+    setPromoCode(false);
+  };
   return (
     <div className="flex flex-col md:flex-row items-center gap-10 text-white">
       <div>
-        <h1 className="text-4xl font-bold mb-8">
+        <h1 className="text-5xl font-bold mb-10">
           Web Development with PHP & Laravel
         </h1>
-        <p className="text-base mb-8">
+        <p className="text-base mb-10">
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout.
         </p>
-        <div className="flex flex-col md:flex-row justify-between mb-8">
+        <div className="flex flex-col md:flex-row justify-between mb-16">
           <div className="mb-3 md:mb-0">
             <p style={{ color: "#0F969C" }} className="font-semibold">
               Starting Date
@@ -28,11 +38,11 @@ export default function CourseBanner() {
           </div>
         </div>
         <div style={{ backgroundColor: "#6DA5C0" }} className="rounded-xl p-5">
-          <div class="relative flex items-center">
-            <span class="flex-shrink text-xl text-white font-bold mr-3">
+          <div className="relative flex items-center">
+            <span className="flex-shrink text-xl text-white font-bold mr-3">
               This Course Offers
             </span>
-            <div class="flex-grow border-t border-white"></div>
+            <div className="flex-grow border-t border-white"></div>
           </div>
           <div className="grid md:grid-cols-2 gap-4 my-10">
             <div className="relative flex items-center">
@@ -100,17 +110,74 @@ export default function CourseBanner() {
                 100 Seats Left
               </button>
             </div>
-            <h2 className="card-title text-start text-2xl mt-4">
-              Web Development With PHP & Laravel
-            </h2>
-            <div className="card-actions justify-between items-center">
-              <h3 className="text-2xl">10,000</h3>
+            <div style={{ borderBottom: "2px #0F969C solid" }} className="p-5">
+              <div className="card-actions justify-between items-center mb-4">
+                <h3 className="text-2xl">10,000/-</h3>
+                <button
+                  style={{ color: "#0F969C" }}
+                  className="border-0 text-white"
+                  onClick={() => handlePromo()}
+                >
+                  Apply Promo Code
+                </button>
+              </div>
+              {promoCode && (
+                <div className="flex items-center w-full gap-5 my-4">
+                  <button
+                    onClick={() => closePromo()}
+                    style={{ backgroundColor: "#0F969C" }}
+                    className="btn border-0 text-white"
+                  >
+                    X
+                  </button>
+                  <input
+                    type="text"
+                    placeholder="Enter Your Promo Code"
+                    className={`${styles.tealBg} ${styles.btnBorder} input w-full`}
+                  />
+                  <button
+                    style={{ backgroundColor: "#0F969C" }}
+                    className="btn border-0 text-white"
+                  >
+                    Apply Now
+                  </button>
+                </div>
+              )}
               <button
                 style={{ backgroundColor: "#0F969C" }}
-                className="btn border-0 text-white"
+                className="btn border-0 w-full"
               >
-                See Details
+                JOIN THIS COURSE
               </button>
+            </div>
+            <div className="p-5">
+              <p className="text-lg mb-3">In This Course You Will Get</p>
+              <div className="grid grid-cols-3 gap-3">
+                <div className="flex items-center gap-1">
+                  <FiCheckCircle className="text-sm" />
+                  <p className="text-sm">4 Months Study Plan</p>
+                </div>
+                <div className="flex items-center gap-1">
+                  <FiCheckCircle className="text-sm" />
+                  <p className="text-sm">15th Module</p>
+                </div>
+                <div className="flex items-center gap-1">
+                  <FiCheckCircle className="text-sm" />
+                  <p className="text-sm">30 Live Classes</p>
+                </div>
+                <div className="flex items-center gap-1">
+                  <FiCheckCircle className="text-sm" />
+                  <p className="text-sm">Assignment</p>
+                </div>
+                <div className="flex items-center gap-1">
+                  <FiCheckCircle className="text-sm" />
+                  <p className="text-sm">6th Live Projects</p>
+                </div>
+                <div className="flex items-center gap-1">
+                  <FiCheckCircle className="text-sm" />
+                  <p className="text-sm">Job Market Guideline</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
