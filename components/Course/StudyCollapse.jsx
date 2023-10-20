@@ -4,8 +4,8 @@ export default function StudyCollapse() {
   return (
     <div>
       <div className={`${styles.skyBg} collapse bg-base-200 mb-4`}>
-        <input type="radio" name="my-accordion-1" checked="checked" />
-        <div className="collapse-title flex items-center gap-2 text-xl font-medium">
+        <input type="radio" name="my-accordion-1" />
+        <div className="collapse-title flex flex-col md:flex-row items-center gap-2 text-xl font-medium">
           <p className={`${styles.tealBg} text-lg p-3 rounded-md`}>Module 1</p>
           <div className="flex flex-col">
             <h3 className="font-bold">Write Down Heading On Your Module Title</h3>
@@ -23,7 +23,7 @@ export default function StudyCollapse() {
       </div>
       <div className={`${styles.skyBg} collapse bg-base-200 mb-4`}>
         <input type="radio" name="my-accordion-1" />
-        <div className="collapse-title flex items-center gap-2 text-xl font-medium">
+        <div className="collapse-title flex flex-col md:flex-row items-center gap-2 text-xl font-medium">
           <p className={`${styles.tealBg} text-lg p-3 rounded-md`}>Module 1</p>
           <div className="flex flex-col">
             <h3 className="font-bold">Write Down Heading On Your Module Title</h3>
@@ -41,7 +41,7 @@ export default function StudyCollapse() {
       </div>
       <div className={`${styles.skyBg} collapse bg-base-200 mb-4`}>
         <input type="radio" name="my-accordion-1" />
-        <div className="collapse-title flex items-center gap-2 text-xl font-medium">
+        <div className="collapse-title flex flex-col md:flex-row items-center gap-2 text-xl font-medium">
           <p className={`${styles.tealBg} text-lg p-3 rounded-md`}>Module 1</p>
           <div className="flex flex-col">
             <h3 className="font-bold">Write Down Heading On Your Module Title</h3>

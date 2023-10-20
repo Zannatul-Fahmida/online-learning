@@ -7,6 +7,7 @@ import StudyPlan from "../../../components/Course/StudyPlan";
 import Instructor from "../../../components/Course/Instructor";
 import Requirements from "../../../components/Course/Requirements";
 import Help from "../../../components/Course/Help";
+import Payment from "../../../components/Course/Payment";
 
 export default function CourseDetails() {
   const studyRef = useRef();
@@ -97,6 +98,7 @@ export default function CourseDetails() {
         <div ref={helpRef}>
           <Help />
         </div>
+        <Payment />
       </div>
       <Footer />
     </div>

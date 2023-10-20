@@ -14,9 +14,9 @@ export default function CourseBanner() {
     setPromoCode(false);
   };
   return (
-    <div className="flex flex-col md:flex-row items-center gap-10 text-white">
+    <div className="flex flex-col md:flex-row md:items-center gap-10 text-white">
       <div>
-        <h1 className="text-5xl font-bold mb-10">
+        <h1 className="text-4xl md:text-5xl font-bold mb-10">
           Web Development with PHP & Laravel
         </h1>
         <p className="text-base mb-10">
@@ -99,13 +99,13 @@ export default function CourseBanner() {
             >
               <button
                 style={{ backgroundColor: "#0f959c91" }}
-                className="btn border-0 text-white"
+                className="btn-sm md:btn border-0 text-white"
               >
                 100 Days Left
               </button>
               <button
                 style={{ backgroundColor: "#0f959c91" }}
-                className="btn border-0 text-white"
+                className="btn-sm md:btn border-0 text-white"
               >
                 100 Seats Left
               </button>
@@ -122,11 +122,11 @@ export default function CourseBanner() {
                 </button>
               </div>
               {promoCode && (
-                <div className="flex items-center w-full gap-5 my-4">
+                <div className="flex items-center w-full gap-2 md:gap-5 my-4">
                   <button
                     onClick={() => closePromo()}
                     style={{ backgroundColor: "#0F969C" }}
-                    className="btn border-0 text-white"
+                    className="btn-xs md:btn border-0 md:border-0 text-white"
                   >
                     X
                   </button>
@@ -152,30 +152,30 @@ export default function CourseBanner() {
             </div>
             <div className="p-5">
               <p className="text-lg mb-3">In This Course You Will Get</p>
-              <div className="grid grid-cols-3 gap-3">
-                <div className="flex items-center gap-1">
-                  <FiCheckCircle className="text-sm" />
-                  <p className="text-sm">4 Months Study Plan</p>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-3">
+                <div className="flex items-center gap-1 text-sm">
+                  <FiCheckCircle />
+                  <p>4 Months Study Plan</p>
                 </div>
-                <div className="flex items-center gap-1">
-                  <FiCheckCircle className="text-sm" />
-                  <p className="text-sm">15th Module</p>
+                <div className="flex items-center gap-1 text-sm">
+                  <FiCheckCircle />
+                  <p>15th Module</p>
                 </div>
-                <div className="flex items-center gap-1">
-                  <FiCheckCircle className="text-sm" />
-                  <p className="text-sm">30 Live Classes</p>
+                <div className="flex items-center gap-1 text-sm">
+                  <FiCheckCircle />
+                  <p>30 Live Classes</p>
                 </div>
-                <div className="flex items-center gap-1">
-                  <FiCheckCircle className="text-sm" />
-                  <p className="text-sm">Assignment</p>
+                <div className="flex items-center gap-1 text-sm">
+                  <FiCheckCircle />
+                  <p>Assignment</p>
                 </div>
-                <div className="flex items-center gap-1">
-                  <FiCheckCircle className="text-sm" />
-                  <p className="text-sm">6th Live Projects</p>
+                <div className="flex items-center gap-1 text-sm">
+                  <FiCheckCircle />
+                  <p>6th Live Projects</p>
                 </div>
-                <div className="flex items-center gap-1">
-                  <FiCheckCircle className="text-sm" />
-                  <p className="text-sm">Job Market Guideline</p>
+                <div className="flex items-center gap-1 text-sm">
+                  <FiCheckCircle />
+                  <p>Job Market Guideline</p>
                 </div>
               </div>
             </div>
