@@ -35,7 +35,7 @@ export default function Payment() {
               className="p-8 rounded-lg"
             >
               <div className="flex flex-col md:flex-row">
-                <Image width={150} src={courseImg} />
+                <Image width={150} src={courseImg} alt="course image" />
                 <div style={{ borderBottom: "2px #FFFFFF solid" }}>
                   <h3 className="text-xl font-bold md:ml-4">
                     Web Development with Php And Laravel
@@ -85,19 +85,19 @@ export default function Payment() {
               <div className="flex items-center gap-3 mb-4">
                 <input type="radio" name="radio-1" className="radio" />
                 <div className="rounded-md bg-white py-2.5 md:py-4 px-16">
-                  <Image width={200} src={payment2} alt="bkash" />
+                  <Image width={200} src={payment2} alt="nogod" />
                 </div>
               </div>
               <div className="flex items-center gap-3 mb-4">
                 <input type="radio" name="radio-1" className="radio" />
                 <div className="rounded-md bg-white py-2 px-16">
-                  <Image width={200} src={payment3} alt="bkash" />
+                  <Image width={200} src={payment3} alt="india" />
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <input type="radio" name="radio-1" className="radio" />
                 <div className="rounded-md bg-white py-2.5 md:py-3 px-16">
-                  <Image width={200} src={payment4} alt="bkash" />
+                  <Image width={200} src={payment4} alt="card" />
                 </div>
               </div>
             </div>

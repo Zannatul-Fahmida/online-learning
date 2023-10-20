@@ -12,7 +12,7 @@ export default function Instructor() {
         style={{ backgroundColor: "#D9D9D9" }}
         className="flex flex-col md:flex-row items-center gap-4 text-black rounded-lg p-4 my-5"
       >
-        <Image width={80} src={teacherImg} />
+        <Image width={80} src={teacherImg} alt="teacher image" />
         <div>
           <h4 className="text-xl font-bold">Instructor Name</h4>
           <p className="font-semibold">Founder, Your Organization name</p>
@@ -22,7 +22,7 @@ export default function Instructor() {
         style={{ backgroundColor: "#D9D9D9" }}
         className="flex flex-col md:flex-row items-center gap-4 text-black rounded-lg p-4 my-5"
       >
-        <Image width={80} src={teacherImg} />
+        <Image width={80} src={teacherImg} alt="teacher image" />
         <div>
           <h4 className="text-xl font-bold">Instructor Name</h4>
           <p className="font-semibold">Founder, Your Organization name</p>
