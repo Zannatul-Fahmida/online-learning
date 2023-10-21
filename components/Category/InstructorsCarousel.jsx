@@ -18,6 +18,16 @@ export default function InstructorsCarousel() {
       slidesPerView={4}
       navigation
       pagination={{ clickable: true }}
+      breakpoints={{
+        360: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        768:{
+          slidesPerView: 4,
+          spaceBetween: 50,
+        }
+      }}
       onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log("slide change")}
       className="my-8"

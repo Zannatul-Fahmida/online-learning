@@ -36,7 +36,7 @@ export default function CategoryDetails() {
         <InstructorsCarousel />
       </div>
       <div
-        className={`${styles.hiredBg} text-white text-center px-12 md:px-24 py-20`}
+        className={`${styles.hiredBg} text-white text-center py-20`}
       >
         <h2 className="text-2xl font-bold">Who Got Hired</h2>
         <HiredCarousel />
