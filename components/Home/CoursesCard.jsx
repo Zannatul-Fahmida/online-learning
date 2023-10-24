@@ -14,7 +14,7 @@ export default function CoursesCard({ course }) {
   return (
     <div
       style={{ border: "2px #0F969C solid" }}
-      className="card w-62 md:w-82 mx-2 shadow-md"
+      className="card mx-2 shadow-md"
     >
       <figure>
         <Image width={500} src={courseImg} alt={title} />

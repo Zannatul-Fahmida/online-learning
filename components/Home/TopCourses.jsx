@@ -32,42 +32,54 @@ const courses = [
     price: 50,
     ratings: 150,
   },
+  {
+    title: "Become a Wordpress Pro with Projects",
+    teacher: "Fahim Wahid Rafi",
+    price: 50,
+    ratings: 60,
+  },
+  {
+    title: "Graphics Design And Freelancing",
+    teacher: "Md. Momin Khan",
+    price: 50,
+    ratings: 150,
+  },
 ];
 
 export default function TopCourses() {
-  return (  
-    <div className={`${styles.courseBg} text-center text-white px-12 md:px-24 py-20`}>
-    <div className="flex flex-col justify-center items-center">
-    <h2 className="text-3xl">Top Level Courses</h2>
-    <Image className="my-8" width={500} src={img} alt="design" />
-    </div>
-    <Swiper
-      modules={[Navigation, A11y]}
-      spaceBetween={50}
-      slidesPerView={3}
-      navigation
-      breakpoints={{
-        360: {
-          slidesPerView: 1,
-          spaceBetween: 20,
-        },
-        768:{
-          slidesPerView: 3,
-          spaceBetween: 50,
-        }
-      }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log("slide change")}
-      className="my-8"
+  return (
+    <div
+      className={`${styles.courseBg} text-center text-white px-12 md:px-24 py-20`}
     >
-    {
-      courses?.map((course) => (
-        <SwiperSlide key={course.title}>
-        <CoursesCard course={course} />
-        </SwiperSlide>
-      ))
-    }
-    </Swiper>
+      <div className="flex flex-col justify-center items-center">
+        <h2 className="text-3xl">Top Level Courses</h2>
+        <Image className="my-8" width={500} src={img} alt="design" />
+      </div>
+      <Swiper
+        modules={[Navigation, A11y]}
+        spaceBetween={20}
+        slidesPerView={4}
+        navigation
+        breakpoints={{
+          360: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+          },
+        }}
+        onSwiper={(swiper) => console.log(swiper)}
+        onSlideChange={() => console.log("slide change")}
+        className="my-8"
+      >
+        {courses?.map((course) => (
+          <SwiperSlide key={course.title}>
+            <CoursesCard course={course} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 }
