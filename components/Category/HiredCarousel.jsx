@@ -9,23 +9,23 @@ export default function HiredCarousel() {
   return (
     <Swiper
       slidesPerView={4}
-      spaceBetween={30}     
+      spaceBetween={30}
       breakpoints={{
         360: {
           slidesPerView: 1,
           spaceBetween: 20,
         },
-        768:{
+        768: {
           slidesPerView: 4,
           spaceBetween: 50,
-        }
+        },
       }}
       centeredSlides={true}
       className="mySwiper mt-12"
     >
       <SwiperSlide>
         <div
-          className={`${styles.lightTealBg} flex flex-col items-center p-6 rounded-xl`}
+          className={`${styles.tealBg} flex flex-col items-center p-6 rounded-xl`}
         >
           <h4 className="font-bold text-lg">Md. Momin Khan</h4>
           <Image className="py-4" src={teacher} alt="instructor" />
@@ -34,7 +34,7 @@ export default function HiredCarousel() {
       </SwiperSlide>
       <SwiperSlide>
         <div
-          className={`${styles.lightTealBg} flex flex-col items-center p-6 rounded-xl`}
+          className={`${styles.tealBg} flex flex-col items-center p-6 rounded-xl`}
         >
           <h4 className="font-bold text-lg">Md. Momin Khan</h4>
           <Image className="py-4" src={teacher} alt="instructor" />
@@ -43,7 +43,7 @@ export default function HiredCarousel() {
       </SwiperSlide>
       <SwiperSlide>
         <div
-          className={`${styles.lightTealBg} flex flex-col items-center p-6 rounded-xl`}
+          className={`${styles.tealBg} flex flex-col items-center p-6 rounded-xl`}
         >
           <h4 className="font-bold text-lg">Md. Momin Khan</h4>
           <Image className="py-4" src={teacher} alt="instructor" />
@@ -52,7 +52,7 @@ export default function HiredCarousel() {
       </SwiperSlide>
       <SwiperSlide>
         <div
-          className={`${styles.lightTealBg} flex flex-col items-center p-6 rounded-xl`}
+          className={`${styles.tealBg} flex flex-col items-center p-6 rounded-xl`}
         >
           <h4 className="font-bold text-lg">Md. Momin Khan</h4>
           <Image className="py-4" src={teacher} alt="instructor" />
@@ -61,7 +61,7 @@ export default function HiredCarousel() {
       </SwiperSlide>
       <SwiperSlide>
         <div
-          className={`${styles.lightTealBg} flex flex-col items-center p-6 rounded-xl`}
+          className={`${styles.tealBg} flex flex-col items-center p-6 rounded-xl`}
         >
           <h4 className="font-bold text-lg">Md. Momin Khan</h4>
           <Image className="py-4" src={teacher} alt="instructor" />
@@ -70,7 +70,7 @@ export default function HiredCarousel() {
       </SwiperSlide>
       <SwiperSlide>
         <div
-          className={`${styles.lightTealBg} flex flex-col items-center p-6 rounded-xl`}
+          className={`${styles.tealBg} flex flex-col items-center p-6 rounded-xl`}
         >
           <h4 className="font-bold text-lg">Md. Momin Khan</h4>
           <Image className="py-4" src={teacher} alt="instructor" />
@@ -79,7 +79,7 @@ export default function HiredCarousel() {
       </SwiperSlide>
       <SwiperSlide>
         <div
-          className={`${styles.lightTealBg} flex flex-col items-center p-6 rounded-xl`}
+          className={`${styles.tealBg} flex flex-col items-center p-6 rounded-xl`}
         >
           <h4 className="font-bold text-lg">Md. Momin Khan</h4>
           <Image className="py-4" src={teacher} alt="instructor" />
@@ -88,7 +88,7 @@ export default function HiredCarousel() {
       </SwiperSlide>
       <SwiperSlide>
         <div
-          className={`${styles.lightTealBg} flex flex-col items-center p-6 rounded-xl`}
+          className={`${styles.tealBg} flex flex-col items-center p-6 rounded-xl`}
         >
           <h4 className="font-bold text-lg">Md. Momin Khan</h4>
           <Image className="py-4" src={teacher} alt="instructor" />
@@ -97,7 +97,7 @@ export default function HiredCarousel() {
       </SwiperSlide>
       <SwiperSlide>
         <div
-          className={`${styles.lightTealBg} flex flex-col items-center p-6 rounded-xl`}
+          className={`${styles.tealBg} flex flex-col items-center p-6 rounded-xl`}
         >
           <h4 className="font-bold text-lg">Md. Momin Khan</h4>
           <Image className="py-4" src={teacher} alt="instructor" />
