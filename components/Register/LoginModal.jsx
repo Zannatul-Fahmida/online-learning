@@ -11,6 +11,7 @@ import { AiOutlineEye, AiFillEye } from "react-icons/ai";
 import { AUTH } from "../../store/apiConfig";
 import axios from "axios";
 import { setLogin } from "../../store/slices/auth";
+//details
 
 export default function LoginModal({
   setLoginModalOpen,
