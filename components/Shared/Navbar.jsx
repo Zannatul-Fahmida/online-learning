@@ -5,6 +5,8 @@ import { useState } from "react";
 import RegisterModal from "../Register/RegisterModal";
 import LoginModal from "../Register/LoginModal";
 import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { setClearAuth } from "../../store/slices/auth";
 
 const categoriesItems = [
   {
@@ -53,7 +55,9 @@ export default function Navbar() {
   const router = useRouter();
   const [registerModalOpen, setRegisterModalOpen] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
-
+  const [dropdown, setDropdown] = useState(false);
+  const { user, token } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const handleRegisterModal = (id) => {
     if (!registerModalOpen) {
       router.push({ pathname: "/", query: { modal: "register" } });
@@ -113,7 +117,10 @@ export default function Navbar() {
                     className={`${styles.darkTealBg} rounded-lg my-2 py-2`}
                   >
                     <Link
-                      href={item.slug}
+                      href={`/categories/${item.title
+                        .toLowerCase()
+                        .split(" ")
+                        .join("-")}`}
                       className="hover:text-slate-300 hover:bg-transparent"
                     >
                       {item.title}
@@ -122,26 +129,44 @@ export default function Navbar() {
                 ))}
               </ul>
             </li>
-            <li>
-              <div className="flex justify-center">
-                <button
-                  className="btn btn-ghost hover:bg-teal-900 hover:text-white w-full"
-                  onClick={() => handleLoginModal("my_modal_1")}
-                >
-                  Sign In
-                </button>
-              </div>
-            </li>
-            <li>
-              <div className="flex justify-center">
-                <button
-                  className="btn btn-ghost hover:bg-teal-900 hover:text-white w-full"
-                  onClick={() => handleRegisterModal("my_modal_2")}
-                >
-                  Get Started
-                </button>
-              </div>
-            </li>
+            {user ? (
+              <>
+                <li className="btn btn-ghost hover:bg-teal-900 hover:text-white w-full">
+                  {user.name}
+                </li>
+                <li className="btn btn-ghost hover:bg-teal-900 hover:text-white w-full">
+                  <Link href="/dashboard">Dashboard</Link>
+                </li>
+                <li className="btn btn-ghost hover:bg-teal-900 hover:text-white w-full">
+                  <button onClick={() => dispatch(setClearAuth())}>
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <div className="flex justify-center">
+                    <button
+                      className="btn btn-ghost hover:bg-teal-900 hover:text-white w-full"
+                      onClick={() => handleLoginModal("my_modal_1")}
+                    >
+                      Sign In
+                    </button>
+                  </div>
+                </li>
+                <li>
+                  <div className="flex justify-center">
+                    <button
+                      className="btn btn-ghost hover:bg-teal-900 hover:text-white w-full"
+                      onClick={() => handleRegisterModal("my_modal_2")}
+                    >
+                      Get Started
+                    </button>
+                  </div>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <Link className="normal-case text-2xl" href="/">
@@ -161,7 +186,13 @@ export default function Navbar() {
                       key={index}
                       className={`${styles.tealTransparentBg} rounded-lg`}
                     >
-                      <Link href={item.slug} className="hover:text-slate-300">
+                      <Link
+                        href={`/categories/${item.title
+                          .toLowerCase()
+                          .split(" ")
+                          .join("-")}`}
+                        className="hover:text-slate-300"
+                      >
                         {item.title}
                       </Link>
                     </li>
@@ -186,18 +217,46 @@ export default function Navbar() {
         </div>
       </div>
       <div className="navbar-end hidden lg:flex">
-        <button
-          className="btn btn-ghost"
-          onClick={() => handleLoginModal("my_modal_1")}
-        >
-          Sign In
-        </button>
-        <button
-          className={`${styles.tealBg} btn text-white border-0 rounded-md hover:bg-teal-900 ml-3`}
-          onClick={() => handleRegisterModal("my_modal_2")}
-        >
-          Get Started
-        </button>
+        {user ? (
+          <div
+            className="uppercase font-bold text-xl cursor-pointer hover:bg-slate-400 p-2 rounded-md relative"
+            onClick={() => setDropdown(!dropdown)}
+          >
+            {user.name}
+
+            {dropdown && (
+              <div className="absolute top-14 bg-teal-700 px-6 right-2 rounded-md shadow-md py-6 flex flex-col items-start justify-start gap-4">
+                <Link
+                  className={`${styles.tealBg} btn text-white border-0 rounded-md hover:bg-teal-900 ml-3`}
+                  href={`/dashboard`}
+                >
+                  Dashboard
+                </Link>
+                <button
+                  className={`${styles.tealBg} btn text-white border-0 rounded-md hover:bg-teal-900 ml-3`}
+                  onClick={() => dispatch(setClearAuth())}
+                >
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <>
+            <button
+              className="btn btn-ghost"
+              onClick={() => handleLoginModal("my_modal_1")}
+            >
+              Sign In
+            </button>
+            <button
+              className={`${styles.tealBg} btn text-white border-0 rounded-md hover:bg-teal-900 ml-3`}
+              onClick={() => handleRegisterModal("my_modal_2")}
+            >
+              Get Started
+            </button>
+          </>
+        )}
       </div>
       {loginModalOpen && (
         <LoginModal
