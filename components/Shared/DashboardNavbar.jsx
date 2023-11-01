@@ -10,17 +10,31 @@ import { SiGoogleclassroom } from "react-icons/si";
 import { VscOutput } from "react-icons/vsc";
 import { SlCamrecorder } from "react-icons/sl";
 import { PiCertificate } from "react-icons/pi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../../styles/Dashboard.module.css";
 import Image from "next/image";
 import profilePic from "../../public/Mask group.png";
+import { useRouter } from "next/router";
 
 export default function DashboardNavbar() {
+  const [selectedNav, setSelectedNav] = useState("");
   const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const router = useRouter();
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
+
+  useEffect(() => {
+    const path = router.asPath;
+    if (path.includes("/dashboard")) setSelectedNav("dashboard");
+  }, [router.asPath]);
+
+  useEffect(() => {
+    const path = router.asPath;
+    if (path.includes("/dashboard/analytics")) setSelectedNav("analytics");
+  }, [router.asPath]);
+
   return (
     <aside
       style={{ backgroundColor: "#0F969C" }}
@@ -40,46 +54,108 @@ export default function DashboardNavbar() {
               )}
             </button>
           </li>
-          <li className={`${styles.tealBgHover} mb-2 p-4`}>
-            <Link className="flex justify-between items-center" href="/about">
-              <div className="flex items-center gap-1">
-                <Image width={50} src={profilePic} alt="Profile Picture" />
-                <div>
-                  <p className="text-sm">Welcome</p>
-                  <p className="text-base">Md. Momin Khan</p>
+          <Link href="/dashboard">
+            <li
+              className={`${selectedNav === "dashboard" ? styles.tealBg : ""} ${
+                styles.tealBgHover
+              } mb-2 p-4`}
+              onClick={() => setSelectedNav("dashboard")}
+            >
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-1">
+                  <Image width={50} src={profilePic} alt="Profile Picture" />
+                  <div>
+                    <p className="text-sm">Welcome</p>
+                    <p className="text-base">Md. Momin Khan</p>
+                  </div>
                 </div>
+                <BsBell />
               </div>
-              <BsBell />
-            </Link>
-          </li>
-          <li className={`${styles.tealBgHover} mb-2 p-4 flex justify-between items-center`}>
-            <Link href="/about">Student Analytics</Link>
-            <IoAnalyticsOutline />
-          </li>
-          <li className={`${styles.tealBgHover} mb-2 p-4 flex justify-between items-center`}>
-            <Link href="/about">Leader Board</Link>
-            <MdLeaderboard />
-          </li>
-          <li className={`${styles.tealBgHover} mb-2 p-4 flex justify-between items-center`}>
-            <Link href="/about">Class Joining</Link>
-            <SiGoogleclassroom />
-          </li>
-          <li className={`${styles.tealBgHover} mb-2 p-4 flex justify-between items-center`}>
-            <Link href="/about">My Courses</Link>
-            <VscOutput />
-          </li>
-          <li className={`${styles.tealBgHover} mb-2 p-4 flex justify-between items-center`}>
-            <Link href="/about">Class Recording</Link>
-            <SlCamrecorder />
-          </li>
-          <li className={`${styles.tealBgHover} mb-2 p-4 flex justify-between items-center`}>
-            <Link href="/about">Assignment</Link>
-            <MdAssignmentAdd />
-          </li>
-          <li className={`${styles.tealBgHover} mb-2 p-4 flex justify-between items-center`}>
-            <Link href="/about">Certificate</Link>
-            <PiCertificate />
-          </li>
+            </li>
+          </Link>
+          <Link href="/dashboard/analytics">
+            <li
+              className={`${selectedNav === "analytics" ? styles.tealBg : ""} ${
+                styles.tealBgHover
+              } mb-2 p-4 flex justify-between items-center`}
+              onClick={() => setSelectedNav("analytics")}
+            >
+              <p>Student Analytics</p>
+              <IoAnalyticsOutline />
+            </li>
+          </Link>
+          <Link href="/about">
+            <li
+              className={`${
+                selectedNav === "leaderboard" ? styles.tealBg : ""
+              } ${
+                styles.tealBgHover
+              } mb-2 p-4 flex justify-between items-center`}
+              onClick={() => setSelectedNav("leaderboard")}
+            >
+              <p>Leader Board</p>
+              <MdLeaderboard />
+            </li>
+          </Link>
+          <Link href="/about">
+            <li
+              className={`${selectedNav === "classjoin" ? styles.tealBg : ""} ${
+                styles.tealBgHover
+              } mb-2 p-4 flex justify-between items-center`}
+              onClick={() => setSelectedNav("classjoin")}
+            >
+              <p>Class Joining</p>
+              <SiGoogleclassroom />
+            </li>
+          </Link>
+          <Link href="/about">
+            <li
+              className={`${selectedNav === "mycourses" ? styles.tealBg : ""} ${
+                styles.tealBgHover
+              } mb-2 p-4 flex justify-between items-center`}
+              onClick={() => setSelectedNav("mycourses")}
+            >
+              <p>My Courses</p>
+              <VscOutput />
+            </li>
+          </Link>
+          <Link href="/about">
+            <li
+              className={`${selectedNav === "recording" ? styles.tealBg : ""} ${
+                styles.tealBgHover
+              } mb-2 p-4 flex justify-between items-center`}
+              onClick={() => setSelectedNav("recording")}
+            >
+              <p>Class Recording</p>
+              <SlCamrecorder />
+            </li>
+          </Link>
+          <Link href="/about">
+            <li
+              className={`${
+                selectedNav === "assignment" ? styles.tealBg : ""
+              } ${
+                styles.tealBgHover
+              } mb-2 p-4 flex justify-between items-center`}
+              onClick={() => setSelectedNav("assignment")}
+            >
+              <p>Assignment</p>
+              <MdAssignmentAdd />
+            </li>
+          </Link>
+          <Link href="/about">
+            <li
+              className={`${
+                selectedNav === "certificate" ? styles.tealBg : ""
+              } ${
+                styles.tealBgHover
+              } mb-2 p-4 flex justify-between items-center`}
+              onClick={() => setSelectedNav("certificate")}
+            >
+              <p>Certificate</p>
+              <PiCertificate />
+            </li>
+          </Link>
         </ul>
       </div>
     </aside>
