@@ -3,6 +3,7 @@ import courseImg from "../../public/Rectangle 117.png";
 import { useState } from "react";
 import { FiCheckCircle } from "react-icons/fi";
 import styles from "../../styles/Course.module.css";
+import Link from "next/link";
 
 export default function CourseBanner() {
   const [promoCode, setPromoCode] = useState(false);
@@ -143,12 +144,13 @@ export default function CourseBanner() {
                   </button>
                 </div>
               )}
-              <button
+              <Link
+                href={`/payment`}
                 style={{ backgroundColor: "#0F969C" }}
                 className="btn border-0 w-full"
               >
                 JOIN THIS COURSE
-              </button>
+              </Link>
             </div>
             <div className="p-5">
               <p className="text-lg mb-3">In This Course You Will Get</p>

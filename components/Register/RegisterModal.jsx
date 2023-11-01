@@ -1,14 +1,70 @@
 import styles from "../../styles/Register.module.css";
-import { useRouter } from "next/navigation";
+import * as Yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import LoginModal from "./LoginModal";
+import { login, setLogin } from "../../store/slices/auth";
+import { AUTH } from "../../store/apiConfig";
+import axios from "axios";
 
 export default function RegisterModal({
   setRegisterModalOpen,
   loginModalOpen,
   setLoginModalOpen,
 }) {
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
+    email: Yup.string().required("Email is required").email("Email is Invalid"),
+    password: Yup.string()
+      .required("Password is required")
+      .min(8, "Password must be at least 8 characters"),
+    // confirmPassword: Yup.string()
+    //   .required("Password is mandatory")
+    //   .oneOf([Yup.ref("password")], "Passwords does not match"),
+  });
+  const formOptions = { resolver: yupResolver(validationSchema) };
+
+  const { register, handleSubmit, formState } = useForm(formOptions);
+  const { errors } = formState;
+  const dispatch = useDispatch();
   const router = useRouter();
 
+  const onSubmit = (data) => {
+    try {
+      axios
+        .post(`${AUTH.REGISTER_API}`, data)
+        .then((res) => {
+          console.log(res);
+          if (res.status === 201) {
+            const { email, password } = data;
+            // dispatch(login({ email, password }))
+
+            axios
+              .post(`${AUTH.LOGIN_API}`, { email, password })
+              .then((res) => {
+                dispatch(setLogin(res.data));
+                console.log(res.data);
+
+                router.replace("/");
+                setRegisterModalOpen(false);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          } else {
+            console.log(res);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handleClose = () => {
     router.push("/");
     setRegisterModalOpen(false);
@@ -44,17 +100,20 @@ export default function RegisterModal({
           className="flex flex-col items-center flex-grow h-full text-white px-8"
         >
           <h1 className="text-4xl font-bold py-12">Create an account!</h1>
-          <input
-            type="text"
-            placeholder="Full Name...."
-            className={`${styles.tealBg} input w-full mb-4`}
-          />
-          <input
-            type="email"
-            placeholder="Email Address...."
-            className={`${styles.tealBg} input w-full mb-4`}
-          />
-          <div className="flex w-full mb-4">
+          <form action="" onSubmit={handleSubmit(onSubmit)}>
+            <input
+              type="text"
+              placeholder="Full Name...."
+              className={`${styles.tealBg} input w-full mb-4`}
+              {...register("name")}
+            />
+            <input
+              type="email"
+              placeholder="Email Address...."
+              className={`${styles.tealBg} input w-full mb-4`}
+              {...register("email")}
+            />
+            {/* <div className="flex w-full mb-4">
             <input
               type="text"
               placeholder="User Name....."
@@ -65,24 +124,29 @@ export default function RegisterModal({
               placeholder="Phone Number...."
               className={`${styles.tealBg} input w-full`}
             />
-          </div>
-          <div className="flex w-full mb-4">
-            <input
-              type="password"
-              placeholder="Password...."
-              className={`${styles.tealBg} input w-full mr-4`}
-            />
-            <input
-              type="password"
-              placeholder="Confirm Password...."
-              className={`${styles.tealBg} input w-full`}
-            />
-          </div>
-          <button
-            className={`${styles.tealBg} btn text-white border-0 hover:bg-gray-800/80 w-80 mt-8 mb-4`}
-          >
-            Sign Up
-          </button>
+          </div> */}
+            <div className="flex w-full mb-4">
+              <input
+                type="password"
+                placeholder="Password...."
+                className={`${styles.tealBg} input w-full `}
+                {...register("password")}
+              />
+              {/* <input
+                type="password"
+                placeholder="Confirm Password...."
+                className={`${styles.tealBg} input w-full`}
+                {...register("confirmPassword")}
+              /> */}
+            </div>
+            <div className="flex items-center justify-center">
+              <input
+                type="submit"
+                value="Sign Up"
+                className={`${styles.tealBg} btn text-white border-0 hover:bg-gray-800/80 w-80 mx-auto mt-8 mb-4`}
+              />
+            </div>
+          </form>
           <div className="pb-12 md:pb-0">
             Have an account? Please{" "}
             <button
