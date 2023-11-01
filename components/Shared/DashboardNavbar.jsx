@@ -16,14 +16,9 @@ import Image from "next/image";
 import profilePic from "../../public/Mask group.png";
 import { useRouter } from "next/router";
 
-export default function DashboardNavbar() {
+export default function DashboardNavbar({ isSidebarOpen, toggleSidebar }) {
   const [selectedNav, setSelectedNav] = useState("");
-  const [isSidebarOpen, setSidebarOpen] = useState(true);
   const router = useRouter();
-
-  const toggleSidebar = () => {
-    setSidebarOpen(!isSidebarOpen);
-  };
 
   useEffect(() => {
     const path = router.asPath;
