@@ -6,7 +6,6 @@ export default function Footer() {
     <div className={`${styles.bannerBg} md:p-24 p-12 text-white`}>
       <footer className="footer text-white">
         <aside>
-          <p className="text-3xl">Logo</p>
           <p className="text-2xl">
             Online live skills
             <br />
