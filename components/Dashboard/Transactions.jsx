@@ -69,7 +69,7 @@ export default function Transactions () {
 
       const itemsPerPage = 4;
     return (
-        <div>
+        <div className="my-16">
         <TransactionTable data={data} itemsPerPage={itemsPerPage} />
         </div>
     )

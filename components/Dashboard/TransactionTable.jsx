@@ -27,9 +27,9 @@ export default function TransactionTable({ data, itemsPerPage }) {
   };
 
   return (
-    <div className="overflow-x-auto bg-slate-200">
+    <div className="overflow-x-auto bg-slate-200 rounded-lg">
       <table className="table table-zebra">
-        <thead className={`${styles.skyBlueBg} text-white`}>
+        <thead className={`${styles.skyBlueBg} text-white text-lg font-semibold`}>
           <tr>
             <th>Course Name</th>
             <th>Time</th>
@@ -50,7 +50,7 @@ export default function TransactionTable({ data, itemsPerPage }) {
           ))}
         </tbody>
       </table>
-      <div className="pagination text-center mt-12">
+      <div className="pagination text-center mt-12 mb-6">
         <button
           className={`${
             currentPage === 1
