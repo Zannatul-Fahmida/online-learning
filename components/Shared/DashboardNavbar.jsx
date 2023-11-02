@@ -30,6 +30,36 @@ export default function DashboardNavbar({ isSidebarOpen, toggleSidebar }) {
     if (path.includes("/dashboard/analytics")) setSelectedNav("analytics");
   }, [router.asPath]);
 
+  useEffect(() => {
+    const path = router.asPath;
+    if (path.includes("/dashboard/leaderboard")) setSelectedNav("leaderboard");
+  }, [router.asPath]);
+
+  useEffect(() => {
+    const path = router.asPath;
+    if (path.includes("/dashboard/classjoining")) setSelectedNav("classjoin");
+  }, [router.asPath]);
+
+  useEffect(() => {
+    const path = router.asPath;
+    if (path.includes("/dashboard/mycourses")) setSelectedNav("mycourses");
+  }, [router.asPath]);
+
+  useEffect(() => {
+    const path = router.asPath;
+    if (path.includes("/dashboard/recordings")) setSelectedNav("recording");
+  }, [router.asPath]);
+
+  useEffect(() => {
+    const path = router.asPath;
+    if (path.includes("/dashboard/assignment")) setSelectedNav("assignment");
+  }, [router.asPath]);
+
+  useEffect(() => {
+    const path = router.asPath;
+    if (path.includes("/dashboard/certificate")) setSelectedNav("certificate");
+  }, [router.asPath]);
+
   return (
     <aside
       style={{ backgroundColor: "#0F969C" }}
@@ -79,7 +109,7 @@ export default function DashboardNavbar({ isSidebarOpen, toggleSidebar }) {
               <IoAnalyticsOutline />
             </li>
           </Link>
-          <Link href="/about">
+          <Link href="/dashboard/leaderboard">
             <li
               className={`${
                 selectedNav === "leaderboard" ? styles.tealBg : ""
@@ -92,7 +122,7 @@ export default function DashboardNavbar({ isSidebarOpen, toggleSidebar }) {
               <MdLeaderboard />
             </li>
           </Link>
-          <Link href="/about">
+          <Link href="/dashboard/classjoining">
             <li
               className={`${selectedNav === "classjoin" ? styles.tealBg : ""} ${
                 styles.tealBgHover
@@ -103,7 +133,7 @@ export default function DashboardNavbar({ isSidebarOpen, toggleSidebar }) {
               <SiGoogleclassroom />
             </li>
           </Link>
-          <Link href="/about">
+          <Link href="/dashboard/mycourses">
             <li
               className={`${selectedNav === "mycourses" ? styles.tealBg : ""} ${
                 styles.tealBgHover
@@ -114,7 +144,7 @@ export default function DashboardNavbar({ isSidebarOpen, toggleSidebar }) {
               <VscOutput />
             </li>
           </Link>
-          <Link href="/about">
+          <Link href="/dashboard/recordings">
             <li
               className={`${selectedNav === "recording" ? styles.tealBg : ""} ${
                 styles.tealBgHover
@@ -125,7 +155,7 @@ export default function DashboardNavbar({ isSidebarOpen, toggleSidebar }) {
               <SlCamrecorder />
             </li>
           </Link>
-          <Link href="/about">
+          <Link href="/dashboard/assignment">
             <li
               className={`${
                 selectedNav === "assignment" ? styles.tealBg : ""
@@ -138,7 +168,7 @@ export default function DashboardNavbar({ isSidebarOpen, toggleSidebar }) {
               <MdAssignmentAdd />
             </li>
           </Link>
-          <Link href="/about">
+          <Link href="/dashboard/certificate">
             <li
               className={`${
                 selectedNav === "certificate" ? styles.tealBg : ""
